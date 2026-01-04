@@ -1,0 +1,73 @@
+CREATE DATABASE university_placement_db;
+USE university_placement_db;
+CREATE TABLE department (
+dept_id INT PRIMARY KEY AUTO_INCREMENT,
+dept_name VARCHAR(50) NOT NULL
+);
+CREATE TABLE student (
+student_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+email VARCHAR(100) UNIQUE,
+cgpa DECIMAL(3,2) CHECK (cgpa BETWEEN 0 AND 10),
+graduation_year INT,
+dept_id INT,
+FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
+CREATE TABLE company (
+company_id INT PRIMARY KEY AUTO_INCREMENT,
+company_name VARCHAR(100),
+industry VARCHAR(50),
+location VARCHAR(50)
+);
+CREATE TABLE placement_drive (
+drive_id INT PRIMARY KEY AUTO_INCREMENT,
+company_id INT,
+drive_date DATE,
+job_role VARCHAR(50),
+min_cgpa DECIMAL(3,2),
+FOREIGN KEY (company_id) REFERENCES company(company_id)
+);
+CREATE TABLE job_offer (
+offer_id INT PRIMARY KEY AUTO_INCREMENT,
+student_id INT,
+company_id INT,
+package_lpa DECIMAL(5,2),
+offer_date DATE,
+status VARCHAR(20),
+FOREIGN KEY (student_id) REFERENCES student(student_id),
+FOREIGN KEY (company_id) REFERENCES company(company_id)
+);
+CREATE TABLE placement_record (
+record_id INT PRIMARY KEY AUTO_INCREMENT,
+year INT,
+total_students INT,
+placed_students INT,
+highest_package DECIMAL(5,2),
+average_package DECIMAL(5,2)
+);
+INSERT INTO department (dept_name) VALUES
+('CSE'), ('IT'), ('ECE'), ('MECH');
+
+
+INSERT INTO company (company_name, industry, location) VALUES
+('Amazon', 'Product', 'Bangalore'),
+('TCS', 'Service', 'Mumbai'),
+('Infosys', 'Service', 'Pune');
+
+
+INSERT INTO placement_record (year, total_students, placed_students, highest_package, average_package) VALUES
+(2019, 420, 300, 28.0, 6.5),
+(2020, 450, 320, 30.0, 7.0),
+(2021, 480, 380, 32.0, 7.8),
+(2022, 500, 420, 38.0, 8.5),
+(2023, 520, 460, 45.0, 9.2);
+
+SELECT year,
+ROUND((placed_students * 100.0 / total_students),2) AS placement_percentage
+FROM placement_record;
+SELECT year,
+placed_students,
+placed_students - LAG(placed_students) OVER (ORDER BY year) AS growth
+FROM placement_record;
+SELECT year, highest_package, average_package
+FROM placement_record;
