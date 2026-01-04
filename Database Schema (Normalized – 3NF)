@@ -1,0 +1,89 @@
+STUDENT
+
+student_id (PK)
+
+name
+
+email (UNIQUE)
+
+cgpa
+
+graduation_year
+
+dept_id (FK)
+
+DEPARTMENT
+
+dept_id (PK)
+
+dept_name
+
+COMPANY
+
+company_id (PK)
+
+company_name
+
+industry
+
+location
+
+PLACEMENT_DRIVE
+
+drive_id (PK)
+
+company_id (FK)
+
+drive_date
+
+job_role
+
+min_cgpa
+
+JOB_OFFER
+
+offer_id (PK)
+
+student_id (FK)
+
+company_id (FK)
+
+package_lpa
+
+offer_date
+
+status (Accepted/Rejected)
+
+PLACEMENT_RECORD (Past Data)
+
+record_id (PK)
+
+year
+
+total_students
+
+placed_students
+
+highest_package
+
+average_package
+
+ALUMNI
+
+alumni_id (PK)
+
+student_id (FK)
+
+current_company
+
+designation
+
+SALARY_HISTORY
+
+history_id (PK)
+
+alumni_id (FK)
+
+year
+
+salary_lpa
