@@ -1,0 +1,21 @@
+🔁 Triggers
+
+Auto-update placed_students when offer accepted
+
+📦 Stored Procedures
+
+get_top_placed_departments(year)
+
+get_company_hiring_trend(company_id)
+
+👁️ Views
+
+view_current_year_placements
+
+view_top_salary_students
+
+🔎 Window Functions
+
+Rank students by salary
+
+Year-over-year placement growth
