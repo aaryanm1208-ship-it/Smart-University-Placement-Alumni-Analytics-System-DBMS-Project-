@@ -1,0 +1,30 @@
+Entity Relationship Design (ER Model)
+Main Entities
+
+Student
+
+Department
+
+Company
+
+Placement_Drive
+
+Job_Offer
+
+Placement_Record (Past Records)
+
+Alumni
+
+Salary_History
+
+Relationships
+
+Department ⟶ Student (1:N)
+
+Company ⟶ Placement_Drive (1:N)
+
+Student ⟷ Placement_Drive (M:N)
+
+Student ⟶ Job_Offer (1:N)
+
+Student ⟶ Alumni (1:1)
