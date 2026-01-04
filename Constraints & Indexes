@@ -1,0 +1,13 @@
+UNIQUE(email)
+
+CHECK(cgpa BETWEEN 0 AND 10)
+
+Foreign Key constraints
+
+Index on:
+
+student.cgpa
+
+placement_record.year
+
+job_offer.package_lpa
